@@ -1,0 +1,262 @@
+* { 
+	padding: 0; 
+	margin: 0; 
+	border: 0; 
+} 
+a{
+	text-decoration: none;
+}
+h1,h2{
+	font-weight: normal;
+}
+body{
+	min-width: 1280px;
+	position: relative;
+}
+header {
+	height: 56px;
+	background-color: #fff;
+}
+header .logo{
+	position: absolute;
+	top: 13px;
+	left: 59px;
+}
+header .title{
+	position: absolute;
+	top: 18px;
+	left: 101px;
+	font-family: "SimHei";
+	font-size: 21px;
+	color: #393a3a;
+	line-height: 21px;
+}
+header .login{
+	float: right;
+	margin-right: 67px;
+	margin-top: 13px;
+	font-family: "Microsoft YaHei";
+	font-size: 14px;
+	color: #e74f4d;
+}
+header .login img{
+	margin-right: 5px;
+	margin-top: 3px;
+	margin-left: 7px;
+	float: left;
+} 
+header ul{
+	height: 56px;
+	float: right;
+}
+header li{
+	text-align:center;
+	list-style: none;
+	float: left;
+	margin:0px 5px;
+}
+header li a{
+	display: block;
+	color: #787b83;
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	margin-top: 13px;
+	padding: 0px 18px 20px 18px;
+  
+}
+header .focus a, header li a:hover{
+	color: #e74f4d;
+	border-bottom: 5px solid #e74f4d;
+}
+.partA{
+	font-family: "Microsoft YaHei";
+	height: 940px;
+	position: relative;
+	overflow: hidden;
+}
+.partA img{
+	width: 100%;
+}
+.partA .mask{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.2);
+	position: absolute;
+	top: 0px;
+}
+.partA .mask h1{
+	font-size: 60px;
+	color: #fff;
+	position: absolute;
+	top: 217px;
+	left: 116px;
+}
+.partA .mask p{
+	font-size: 21px;
+	color: #fffdfd;
+	width: 300px;
+	position: absolute;
+	top: 304px; 
+	left: 124px;
+	line-height: 32px;
+}
+.partA .mask button{
+	font-family: "Microsoft YaHei";
+	width: 331px;  
+	height: 65px;
+	color: #fff;
+	font-size: 30px;
+	position: absolute;
+	top: 429px; 
+	left: 126px;
+	background-color: #e74f4d;
+}
+.partA .box{
+	width: 100%;
+	height: 250px;
+	position: absolute;
+	top: 690px;
+	background-color: #FFF;
+}
+.partA .box div{
+	width: 25%;
+	float: left;
+	position: relative;
+}
+.partA .box div img{
+	position: absolute;
+	left: 50%;
+	margin-left: -15px;
+	margin-top: 45px;
+}
+.partA .box div .picA{
+	width: 42px;
+	height: 42px;
+	
+}
+.partA .box div .picB, .partA .box div .picC{
+	width: 35px;
+	height: 40px;
+	
+}
+.partA .box div .picD{
+	width: 41px;
+	height: 40px;
+	
+}
+.partA .box div p{
+	border-right: 2px solid #aaa;
+	padding:0px 80px;
+	font-family: "SimHei";
+	font-size: 14px;
+	color: #767777;
+	text-align: center;
+	margin-top: 133px;
+	height: 50px;
+}
+.partA .box .sectionD p{
+	border-right: none;
+}
+.partB{
+	clear: both;
+	width: 100%;
+	height: 361px;
+	background-color: #ededec;
+	position: relative;
+}
+.partB img{
+	position: absolute;
+	top: 89px;
+	left: 50%;
+	margin-left: -45px;
+}
+.partB p{
+	font-family: "SimHei";
+	font-size: 54px;
+	color: rgba(50,51,51,0.5); 
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: 229px;
+	line-height: 56px;
+}
+
+.partC{
+	width: 100%;
+	height: 341px;
+	overflow: hidden;
+	position: relative;
+	font-family:  "Microsoft YaHei";
+}
+.partC img{
+	width: 100%;
+}
+
+.partC .mask{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(170,52,50,0.2);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.partC .mask h1{
+	width: 100%;
+	text-align: center;
+	font-size: 21px;
+	color: #fff;
+	margin-top: 53px;
+}
+.partC .mask h2{
+	width: 31px;
+	border-top: 3px solid #fff;
+	margin:10px auto;
+}
+.partC .mask p{
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	color: rgba(255,255,255,0.8);
+	margin-top: 19px;
+}
+.partC .mask .box{
+	position: absolute;
+	left: 50%;
+	margin-left:-515px;
+	top: 170px;
+}
+.partC .mask select{
+	border:none;
+	/*将默认的select选择框样式清除*/
+	appearance:none;
+  	-moz-appearance:none;
+ 	-webkit-appearance:none;
+ 	background: #fff url("../img/select.png") no-repeat scroll right center;
+ 	padding-left: 10px;
+ 	font-family:  "Microsoft YaHei";
+	width: 236px;
+	height: 36px;
+	font-size: 12px;
+	color: #a8aaaa;
+	margin-right: 28px;
+	float: left;
+
+}
+.partC .mask select.focus{
+	border: 2px solid #c26d65;
+} 
+.partC .mask option{
+    background-color: #e3e3e4;
+    font-family:  "Microsoft YaHei";
+    font-size: 12px;
+    color: rgba(50,51,51,0.7);
+ }
+ .partC .mask button{
+ 	width: 236px;
+ 	height: 36px;
+ 	background-color: #be4f48;
+ 	font-family:  "Microsoft YaHei";
+ 	font-size: 14px;
+ 	color: #FFF;
+ 	float: left;
+ }
