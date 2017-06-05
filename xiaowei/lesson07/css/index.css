@@ -6,9 +6,6 @@
 a{
 	text-decoration: none;
 }
-a, input{
-	outline:none;
-}
 h1,h2{
 	font-weight: normal;
 }
