@@ -2,6 +2,7 @@
 	padding: 0; 
 	margin: 0; 
 	border: 0; 
+	outline:none;
 } 
 a{
 	text-decoration: none;
@@ -686,12 +687,14 @@ header .focus a, header li a:hover{
 	color: #FFF;
 	letter-spacing: 10px;
 	float: right;
+	cursor: pointer;
 }
 .partH div:last-of-type{
 	width: 181px;
 }
 .partH div img{
 	float: left;
+	cursor: pointer;
 }
 .partH div img.weibo,.partH div img.twitter{
 	margin-left: 27px;
