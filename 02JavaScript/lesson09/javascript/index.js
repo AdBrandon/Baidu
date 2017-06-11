@@ -2,7 +2,7 @@ var divs = [];
 var times = null;
 window.onload = function() {
 	var root = document.getElementById("tree");
-
+	var divsList = document.getElementsByTagName("div");
 	document.getElementById("preOrder").addEventListener("click", function() {
 		clear();
 		preOrder(root);
@@ -33,77 +33,88 @@ window.onload = function() {
 			changeColorFind();
 		}
 	}, false);
-
+	//为每个DIV绑定事件
+	for (var i = 0; i < divsList.length; i++) {
+		divsList[i].addEventListener("click", function(event) {
+			for (var i = 0; i < divsList.length; i++) {
+				divsList[i].style.background = "#fff";
+			}
+			this.style.background = "yellow";
+			event.stopPropagation()
+		}, false);
+	}
+	document.getElementById("delete").addEventListener("click", function() {
+		deleteData(divsList);
+	}, false);
+	document.getElementById("putIn").addEventListener("click", function() {
+		putIn(divsList);
+	}, false);
 }
 
 function preOrder(node) {
 	if (!(node == null)) {
-		var name = node.nodeName
-		if (node.nodeName === "DIV") {
-			divs.push(node);
-		}
-		if (node.children.length > 0) {
-			for (var i = 0; i < node.children.length; i++) {
-				preOrder(node.children[i]);
-			}
+		divs.push(node);
+		for (var i = 0; i < node.children.length; i++) {
+			preOrder(node.children[i]);
 		}
 	}
 }
 
 function postOrder(node) {
 	if (!(node == null)) {
-		if (node.children.length > 0) {
-			for (var i = 0; i < node.children.length; i++) {
-				if (node.children[i].tagName = "div") {
-					postOrder(node.children[i]);
-				}
+		for (var i = 0; i < node.children.length; i++) {
+			if (node.children[i].tagName = "div") {
+				postOrder(node.children[i]);
 			}
 		}
-		if (node.tagName === "DIV") {
-			divs.push(node);
-		}
+		divs.push(node);
 	}
 }
 
 function changeColor() {
 	var i = 0;
-	divs[i].style.background = "#b2d235";
-	times = setInterval(function() {
-		i++;
-		if (i < divs.length) {
-			divs[i].style.background = "#b2d235";
+
+	function order() {
+		if (divs[i - 1]) {
 			divs[i - 1].style.background = "#fff";
-		} else {
-			clear();
 		}
-	}, 300)
+		if (i == divs.length) {
+			clearInterval(times);
+			return false;
+		}
+		divs[i].style.background = "#b2d235";
+		i++;
+	}
+	times = setInterval(order, 200);
 }
 
 function changeColorFind() {
+	var searched = 0;
 	var key = document.getElementsByTagName("input")[0].value;
 	var i = 0;
-	if (divs[i].firstElementChild.innerHTML.indexOf(key) > -1) {
-		divs[i].style.background = "#faa755";
-	} else {
-		divs[i].style.background = "#b2d235";
-	}
-	times = setInterval(function() {
-		i++;
-		if (i < divs.length) {
-			var valuei = divs[i].firstElementChild.innerHTML;
-			var valuej = divs[i - 1].firstElementChild.innerHTML;
-			if (valuei.indexOf(key) > -1) {
-				divs[i].style.background = "#faa755";
-			} else {
-				divs[i].style.background = "#b2d235";
-			}
-			if (valuej.indexOf(key) < 0) {
-				divs[i - 1].style.background = "#fff";
-			}
-		} else {
-			clearWhite();
+
+	function order() {
+		if (divs[i - 1] && divs[i - 1].style.background == "rgb(178, 210, 53)") {
+			divs[i - 1].style.background = "#fff";
 		}
-	}, 200)
+		if (i == divs.length) {
+			clearInterval(times);
+			if (searched == 0) {
+				alert("没有搜索到任何结果！");
+			} else {
+				alert("搜索到" + searched + "个值！");
+			}
+			return false;
+		}
+		if (divs[i].firstChild.nodeValue.indexOf(key) > -1) {
+			divs[i].style.background = "#faa755";
+			searched++;
+		} else {
+			divs[i].style.background = "#b2d235";
+		}
+		i++;
+	}
+	times = setInterval(order, 200);
 }
 
 function clear() {
@@ -116,24 +127,33 @@ function clear() {
 
 }
 
-function clearWhite() {
-	clearInterval(times);
-	divs = [];
-	var count = 0;
-	var divList = document.getElementsByTagName("div");
-	for (var i = 0; i < divList.length; i++) {
-		if (divList[i].style.background !== "rgb(250, 167, 85)") {
-			divList[i].style.background = "#fff";
-		} else {
-			count++;
+function deleteData(divsList) {
+	for (var i = 0; i < divsList.length; i++) {
+		if (divsList[i].style.background == "yellow") {
+			divsList[i].parentNode.removeChild(divsList[i]);
 		}
 	}
-	setTimeout(function() {
-		if (count > 0) {
-			alert("搜索到" + count + "个值！");
-		} else {
-			alert("没有搜索到任何结果！");
-		}
-	}, 200);
+}
 
+function putIn(divsList) {
+	var key = document.getElementsByTagName("input")[1].value;
+	if (key == "") {
+		alert("请输入需要插入的数据！")
+	} else {
+		var div = document.createElement("div");
+		var textNode = document.createTextNode(key);
+		div.appendChild(textNode);
+		div.onclick = function(){
+			for (var i = 0; i < divsList.length; i++) {
+				divsList[i].style.background = "#fff";
+			}
+			this.style.background = "yellow";
+			event.stopPropagation()
+		}
+		for (var i = 0; i < divsList.length; i++) {
+			if (divsList[i].style.background == "yellow") {
+				divsList[i].appendChild(div);
+			}
+		}
+	}
 }
